@@ -1,0 +1,49 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.66])
+AC_INIT(hello, 1.0, wuxilong777@163.com)
+AC_CONFIG_SRCDIR([src/test.h])
+AC_CONFIG_HEADERS([config.h])
+AM_INIT_AUTOMAKE(hello,0.1)
+
+# Checks for programs.
+AC_PROG_CC
+
+# Checks for libraries.
+GTK_REQUIRED=2.20.3
+GLIB_REQUIRED=2.25.90
+
+dnl Requires for the applet
+PKG_CHECK_MODULES(SRC,
+                  gmodule-export-2.0
+                  glib-2.0 >= $GLIB_REQUIRED
+                  gtk+-2.0 >= $GTK_REQUIRED)
+
+
+PKG_CHECK_MODULES(GTK, gtk+-2.0 >= GTK_REQUIRED)
+AC_SUBST(GTK_CFLAGS)
+AC_SUBST(GTK_LIBS)
+
+# Checks for header files.
+
+# Checks for typedefs, structures, and compiler characteristics.
+
+# Checks for library functions.
+
+AC_OUTPUT(Makefile
+          libnet/Makefile
+          src/Makefile
+)
+
+echo "
+Configure summary:
+
+        Compiler....................:  ${CC}
+        Compiler Flags..............:  ${CFLAGS}
+        Prefix......................:  ${prefix}
+        nautilus-sendto plugin......:  ${have_nst}
+        Documentation...............:  ${enable_gtk_doc}
+        GObject-Introspection.......:  ${found_introspection}
+"
+

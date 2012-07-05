@@ -1,0 +1,6 @@
+2012-05-25  Tom Wu  <wuxilong777@163.com>
+
+        * First version
+	                - git clone
+			git://git.freedesktop.org/git/NetworkManager/NetworkManager.git
+
