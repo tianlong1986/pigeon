@@ -1,2 +1,4 @@
+obj=my_net.o
 dist_man1_MANS = \
-	man.1
+	my_net.h \
+	my_net.c

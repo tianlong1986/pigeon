@@ -45,7 +45,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_hello_OBJECTS = hello-test.$(OBJEXT) hello-main.$(OBJEXT)
+am_hello_OBJECTS = hello-test.$(OBJEXT) hello-my_net.$(OBJEXT) \
+	hello-main.$(OBJEXT)
 hello_OBJECTS = $(am_hello_OBJECTS)
 am__DEPENDENCIES_1 =
 hello_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -196,6 +197,8 @@ hello_CPPFLAGS = \
 
 hello_SOURCES = test.h \
 	      test.c \
+	      my_net.h \
+	      my_net.c \
 		main.c  
 
 hello_LDADD = \
@@ -284,6 +287,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hello-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hello-my_net.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hello-test.Po@am__quote@
 
 .c.o:
@@ -313,6 +317,20 @@ hello-test.obj: test.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='test.c' object='hello-test.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-test.obj `if test -f 'test.c'; then $(CYGPATH_W) 'test.c'; else $(CYGPATH_W) '$(srcdir)/test.c'; fi`
+
+hello-my_net.o: my_net.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-my_net.o -MD -MP -MF $(DEPDIR)/hello-my_net.Tpo -c -o hello-my_net.o `test -f 'my_net.c' || echo '$(srcdir)/'`my_net.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/hello-my_net.Tpo $(DEPDIR)/hello-my_net.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='my_net.c' object='hello-my_net.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-my_net.o `test -f 'my_net.c' || echo '$(srcdir)/'`my_net.c
+
+hello-my_net.obj: my_net.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-my_net.obj -MD -MP -MF $(DEPDIR)/hello-my_net.Tpo -c -o hello-my_net.obj `if test -f 'my_net.c'; then $(CYGPATH_W) 'my_net.c'; else $(CYGPATH_W) '$(srcdir)/my_net.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/hello-my_net.Tpo $(DEPDIR)/hello-my_net.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='my_net.c' object='hello-my_net.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-my_net.obj `if test -f 'my_net.c'; then $(CYGPATH_W) 'my_net.c'; else $(CYGPATH_W) '$(srcdir)/my_net.c'; fi`
 
 hello-main.o: main.c
 @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-main.o -MD -MP -MF $(DEPDIR)/hello-main.Tpo -c -o hello-main.o `test -f 'main.c' || echo '$(srcdir)/'`main.c

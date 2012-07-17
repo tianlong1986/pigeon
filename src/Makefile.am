@@ -6,6 +6,8 @@ hello_CPPFLAGS = \
 bin_PROGRAMS=hello  
 hello_SOURCES=test.h \
 	      test.c \
+	      my_net.h \
+	      my_net.c \
 		main.c  
 
 hello_LDADD = \

@@ -45,7 +45,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_hello_OBJECTS = hello-test.$(OBJEXT) hello-main.$(OBJEXT)
+am_hello_OBJECTS = hello-test.$(OBJEXT) hello-my_net.$(OBJEXT) \
+	hello-main.$(OBJEXT)
 hello_OBJECTS = $(am_hello_OBJECTS)
 am__DEPENDENCIES_1 =
 hello_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -100,11 +101,11 @@ am__relativize = \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
   done; \
   reldir="$$dir2"
-ACLOCAL = ${SHELL} /home/tom/work/pigeon/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/tom/work/pigeon/missing --run tar
-AUTOCONF = ${SHELL} /home/tom/work/pigeon/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/tom/work/pigeon/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/tom/work/pigeon/missing --run automake-1.11
+ACLOCAL = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run aclocal-1.11
+AMTAR = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run tar
+AUTOCONF = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run automake-1.11
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -118,7 +119,7 @@ ECHO_N = -n
 ECHO_T = 
 EXEEXT = 
 GTK_CFLAGS = -pthread -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12  
-GTK_LIBS = -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lm -lcairo -lpng12 -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0  
+GTK_LIBS = -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0  
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
@@ -128,7 +129,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/tom/work/pigeon/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = hello
@@ -145,13 +146,13 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/sh
 SRC_CFLAGS = -pthread -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12  
-SRC_LIBS = -Wl,--export-dynamic -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lm -lcairo -lpng12 -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0  
+SRC_LIBS = -Wl,--export-dynamic -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0  
 STRIP = 
 VERSION = 0.1
-abs_builddir = /home/tom/work/pigeon/src
-abs_srcdir = /home/tom/work/pigeon/src
-abs_top_builddir = /home/tom/work/pigeon
-abs_top_srcdir = /home/tom/work/pigeon
+abs_builddir = /home/tom/test/linuxc/pigeon/src
+abs_srcdir = /home/tom/test/linuxc/pigeon/src
+abs_top_builddir = /home/tom/test/linuxc/pigeon
+abs_top_srcdir = /home/tom/test/linuxc/pigeon
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -170,7 +171,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/tom/work/pigeon/install-sh
+install_sh = ${SHELL} /home/tom/test/linuxc/pigeon/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -196,6 +197,8 @@ hello_CPPFLAGS = \
 
 hello_SOURCES = test.h \
 	      test.c \
+	      my_net.h \
+	      my_net.c \
 		main.c  
 
 hello_LDADD = \
@@ -284,6 +287,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/hello-main.Po
+include ./$(DEPDIR)/hello-my_net.Po
 include ./$(DEPDIR)/hello-test.Po
 
 .c.o:
@@ -313,6 +317,20 @@ hello-test.obj: test.c
 #	source='test.c' object='hello-test.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-test.obj `if test -f 'test.c'; then $(CYGPATH_W) 'test.c'; else $(CYGPATH_W) '$(srcdir)/test.c'; fi`
+
+hello-my_net.o: my_net.c
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-my_net.o -MD -MP -MF $(DEPDIR)/hello-my_net.Tpo -c -o hello-my_net.o `test -f 'my_net.c' || echo '$(srcdir)/'`my_net.c
+	$(am__mv) $(DEPDIR)/hello-my_net.Tpo $(DEPDIR)/hello-my_net.Po
+#	source='my_net.c' object='hello-my_net.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-my_net.o `test -f 'my_net.c' || echo '$(srcdir)/'`my_net.c
+
+hello-my_net.obj: my_net.c
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-my_net.obj -MD -MP -MF $(DEPDIR)/hello-my_net.Tpo -c -o hello-my_net.obj `if test -f 'my_net.c'; then $(CYGPATH_W) 'my_net.c'; else $(CYGPATH_W) '$(srcdir)/my_net.c'; fi`
+	$(am__mv) $(DEPDIR)/hello-my_net.Tpo $(DEPDIR)/hello-my_net.Po
+#	source='my_net.c' object='hello-my_net.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-my_net.obj `if test -f 'my_net.c'; then $(CYGPATH_W) 'my_net.c'; else $(CYGPATH_W) '$(srcdir)/my_net.c'; fi`
 
 hello-main.o: main.c
 	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-main.o -MD -MP -MF $(DEPDIR)/hello-main.Tpo -c -o hello-main.o `test -f 'main.c' || echo '$(srcdir)/'`main.c

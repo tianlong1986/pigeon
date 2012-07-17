@@ -70,11 +70,11 @@ am__installdirs = "$(DESTDIR)$(man1dir)"
 NROFF = nroff
 MANS = $(dist_man1_MANS)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/tom/work/pigeon/missing --run aclocal-1.11
-AMTAR = ${SHELL} /home/tom/work/pigeon/missing --run tar
-AUTOCONF = ${SHELL} /home/tom/work/pigeon/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/tom/work/pigeon/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/tom/work/pigeon/missing --run automake-1.11
+ACLOCAL = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run aclocal-1.11
+AMTAR = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run tar
+AUTOCONF = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run automake-1.11
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -88,7 +88,7 @@ ECHO_N = -n
 ECHO_T = 
 EXEEXT = 
 GTK_CFLAGS = -pthread -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12  
-GTK_LIBS = -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lm -lcairo -lpng12 -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0  
+GTK_LIBS = -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0  
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
@@ -98,7 +98,7 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/tom/work/pigeon/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/tom/test/linuxc/pigeon/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 OBJEXT = o
 PACKAGE = hello
@@ -115,13 +115,13 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/sh
 SRC_CFLAGS = -pthread -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12  
-SRC_LIBS = -Wl,--export-dynamic -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lm -lcairo -lpng12 -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0  
+SRC_LIBS = -Wl,--export-dynamic -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0  
 STRIP = 
 VERSION = 0.1
-abs_builddir = /home/tom/work/pigeon/libnet
-abs_srcdir = /home/tom/work/pigeon/libnet
-abs_top_builddir = /home/tom/work/pigeon
-abs_top_srcdir = /home/tom/work/pigeon
+abs_builddir = /home/tom/test/linuxc/pigeon/libnet
+abs_srcdir = /home/tom/test/linuxc/pigeon/libnet
+abs_top_builddir = /home/tom/test/linuxc/pigeon
+abs_top_srcdir = /home/tom/test/linuxc/pigeon
 ac_ct_CC = gcc
 am__include = include
 am__leading_dot = .
@@ -140,7 +140,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/tom/work/pigeon/install-sh
+install_sh = ${SHELL} /home/tom/test/linuxc/pigeon/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -160,8 +160,10 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
+obj = my_net.o
 dist_man1_MANS = \
-	man.1
+	my_net.h \
+	my_net.c
 
 all: all-am
 

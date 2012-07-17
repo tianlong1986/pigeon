@@ -160,8 +160,10 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+obj = my_net.o
 dist_man1_MANS = \
-	man.1
+	my_net.h \
+	my_net.c
 
 all: all-am
 
