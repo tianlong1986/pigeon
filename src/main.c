@@ -1,13 +1,15 @@
-#include <gtk/gtk.h>
-#include "test.h"
-#include "./libnet/my_net.h"
+#include "func_common.h"
+#include "desktop.h"
 
 int main(int argc, char ** argv)
 {
+	GtkWindow* window;
 	gtk_init(&argc, &argv);
 	g_message("Main start");
-	test_print();
 	start_listen();
+	
+	window = create_frame();
+	gtk_widget_show(window);
 	gtk_main();
 	g_message("Main end");
 }

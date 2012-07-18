@@ -3,7 +3,7 @@
 
 AC_PREREQ([2.66])
 AC_INIT(hello, 1.0, wuxilong777@163.com)
-AC_CONFIG_SRCDIR([src/test.h])
+#AC_CONFIG_SRCDIR([src/test.h])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE(hello,0.1)
 

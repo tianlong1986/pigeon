@@ -45,7 +45,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_hello_OBJECTS = hello-test.$(OBJEXT) hello-my_net.$(OBJEXT) \
+am_hello_OBJECTS = hello-desktop.$(OBJEXT) hello-my_net.$(OBJEXT) \
 	hello-main.$(OBJEXT)
 hello_OBJECTS = $(am_hello_OBJECTS)
 am__DEPENDENCIES_1 =
@@ -195,8 +195,9 @@ SUBDIRS =
 hello_CPPFLAGS = \
         $(GTK_CFLAGS)
 
-hello_SOURCES = test.h \
-	      test.c \
+hello_SOURCES = func_common.h \
+	      desktop.h \
+	      desktop.c \
 	      my_net.h \
 	      my_net.c \
 		main.c  
@@ -286,9 +287,9 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/hello-desktop.Po
 include ./$(DEPDIR)/hello-main.Po
 include ./$(DEPDIR)/hello-my_net.Po
-include ./$(DEPDIR)/hello-test.Po
 
 .c.o:
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -304,19 +305,19 @@ include ./$(DEPDIR)/hello-test.Po
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(COMPILE) -c `$(CYGPATH_W) '$<'`
 
-hello-test.o: test.c
-	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-test.o -MD -MP -MF $(DEPDIR)/hello-test.Tpo -c -o hello-test.o `test -f 'test.c' || echo '$(srcdir)/'`test.c
-	$(am__mv) $(DEPDIR)/hello-test.Tpo $(DEPDIR)/hello-test.Po
-#	source='test.c' object='hello-test.o' libtool=no \
+hello-desktop.o: desktop.c
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-desktop.o -MD -MP -MF $(DEPDIR)/hello-desktop.Tpo -c -o hello-desktop.o `test -f 'desktop.c' || echo '$(srcdir)/'`desktop.c
+	$(am__mv) $(DEPDIR)/hello-desktop.Tpo $(DEPDIR)/hello-desktop.Po
+#	source='desktop.c' object='hello-desktop.o' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-test.o `test -f 'test.c' || echo '$(srcdir)/'`test.c
+#	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-desktop.o `test -f 'desktop.c' || echo '$(srcdir)/'`desktop.c
 
-hello-test.obj: test.c
-	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-test.obj -MD -MP -MF $(DEPDIR)/hello-test.Tpo -c -o hello-test.obj `if test -f 'test.c'; then $(CYGPATH_W) 'test.c'; else $(CYGPATH_W) '$(srcdir)/test.c'; fi`
-	$(am__mv) $(DEPDIR)/hello-test.Tpo $(DEPDIR)/hello-test.Po
-#	source='test.c' object='hello-test.obj' libtool=no \
+hello-desktop.obj: desktop.c
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-desktop.obj -MD -MP -MF $(DEPDIR)/hello-desktop.Tpo -c -o hello-desktop.obj `if test -f 'desktop.c'; then $(CYGPATH_W) 'desktop.c'; else $(CYGPATH_W) '$(srcdir)/desktop.c'; fi`
+	$(am__mv) $(DEPDIR)/hello-desktop.Tpo $(DEPDIR)/hello-desktop.Po
+#	source='desktop.c' object='hello-desktop.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-test.obj `if test -f 'test.c'; then $(CYGPATH_W) 'test.c'; else $(CYGPATH_W) '$(srcdir)/test.c'; fi`
+#	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o hello-desktop.obj `if test -f 'desktop.c'; then $(CYGPATH_W) 'desktop.c'; else $(CYGPATH_W) '$(srcdir)/desktop.c'; fi`
 
 hello-my_net.o: my_net.c
 	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(hello_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT hello-my_net.o -MD -MP -MF $(DEPDIR)/hello-my_net.Tpo -c -o hello-my_net.o `test -f 'my_net.c' || echo '$(srcdir)/'`my_net.c
