@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include "func_common.h"
 
 static int my_listen()
 {
@@ -15,6 +16,22 @@ static int my_listen()
 	int recLen;
 	unsigned int addrLen;
 	char recBuffer[200];
+
+	sigset_t mask;
+	sigset_t oldmask;
+	struct sigaction act;
+	int me = getpid();
+	union sigval val;
+	act.sa_sigaction = handler;
+	act.sa_mask = mask;
+	act.sa_flags = SA_SIGINFO;
+	sigaction(SIGRTMIN, &act, NULL);
+	sigemptyset(&mask);
+	sigprocmask(SIG_BLOCK, &mask, &oldmask);
+	val.sival_int = 1;
+	MSG *message;
+	message = g_new0(MSG,1);
+	
 	
 	sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	if( sock < 0)
@@ -32,6 +49,8 @@ static int my_listen()
  		close(sock);
  		exit(1);
 	}
+	printf("thread :myid=%d, parentid=%d",getpid(),getppid());
+	
 	while(1)
 	{
 		addrLen = sizeof(toAddr);
@@ -43,8 +62,15 @@ static int my_listen()
  			exit(1);
 		}
 		printf("%s 说:%s\n",inet_ntoa(toAddr.sin_addr), recBuffer);
+		char* msg;
+		msg = g_strdup_printf("%s",recBuffer);
+		//do_message(inet_ntoa(toAddr.sin_addr), recBuffer);
+		message->msg = msg;
+		message->ip = g_strdup_printf("%s", inet_ntoa(toAddr.sin_addr));	
+		val.sival_ptr = message;
+		sigqueue(me, SIGRTMIN, val);
 		memset(recBuffer, 0, 200);
-		my_sendto("how are you!", "127.0.0.1",4000);
+		//my_sendto("how are you!", "127.0.0.1",4000);
 		//if(sendto(sock,recBuffer,recLen,0,(struct sockaddr*)&toAddr,sizeof(toAddr))!=recLen){
 		//if(sendto(sock,recBuffer,10,0,(struct sockaddr*)&toAddr,1)<0){
 		//	printf("Error send to\n");
@@ -75,6 +101,7 @@ int my_sendto(char* msg, char*host, int port)
 	toAddr.sin_addr.s_addr= inet_addr(host);
 	toAddr.sin_port = htons(port);
 	//if(sendto(sock,msg,strlen(msg),0,(struct sockaddr*)&toAddr,sizeof(toAddr))!=recLen){
+	g_message("now send to %s;%d, msg=%s", host,port,msg);
 	if(sendto(sock,msg,13,0,(struct sockaddr*)&toAddr,sizeof(struct sockaddr_in))<0){
 		printf("sendto fail\r\n");
 		close(sock);
