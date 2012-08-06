@@ -44,9 +44,10 @@ int insert_text_view(GtkWidget *text_view, char* text)
 	buffer=gtk_text_view_get_buffer(GTK_TEXT_VIEW(text_view));
 	g_message("buffer=%ld, text=%s", (long)buffer,text);
         gtk_text_buffer_get_bounds (buffer, &start, &end);
-        gtk_text_buffer_delete (buffer, &start, &end);
+//        gtk_text_buffer_delete (buffer, &start, &end);
 	gtk_text_buffer_get_iter_at_offset (buffer,&iter, 0);
 	gtk_text_buffer_insert (buffer, &iter, text, -1);
+	gtk_text_buffer_insert (buffer, &iter, "\n", -1);
 
 }
 int signal_handler_event(GtkWidget *widget, GdkEventButton *event, gpointer func_data)
@@ -191,6 +192,7 @@ CHAT_PERSON* add_people(char* ip, GtkWidget* vbox)
 	gtk_box_pack_start(GTK_BOX(hbox), widget, FALSE, FALSE,2);	
 	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE,2);	
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE,2);	
+	self->dialog = NULL;
 	return self;
 }
 GtkWidget* create_frame_fixed(GtkWidget* window)
@@ -239,13 +241,14 @@ void do_message(char*ip, char*message)
 	{
 		create_chat_window(person);	
 	}
-	g_message("%s-%s-%d",__FILE__,__func__,__LINE__);
+	g_message("%s-%s-%d,ip=%s,msg=%s",__FILE__,__func__,__LINE__,ip,message);
 	buf = g_strdup_printf("%s说:%s", ip, message);
-	g_message("%s-%s-%d",__FILE__,__func__,__LINE__);
+	g_message("%s-%s-%d,buf=%s",__FILE__,__func__,__LINE__,buf);
 	insert_text_view(person->text_view, buf);
 	g_message("%s-%s-%d,buf=%s",__FILE__,__func__,__LINE__,buf);
 	gdk_threads_leave();
 	g_free(buf);
+	buf=NULL;
 }
 
 PERSON_LIST* add_person_to_list(PERSON_LIST* head, CHAT_PERSON* per)

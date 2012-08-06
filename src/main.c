@@ -2,12 +2,12 @@
 #include "desktop.h"
 void handler(int signo, siginfo_t * si, void *context)
 {
-	printf("\n,收到的信息：%s", si->si_value.sival_ptr);
+	printf("\n,收到的信息：%s", ((MSG*)(si->si_value.sival_ptr))->msg);
 
 	do_message( ((MSG*)(si->si_value.sival_ptr))->ip, ((MSG*)(si->si_value.sival_ptr))->msg);
-	g_free(((MSG*)(si->si_value.sival_ptr))->msg);
-	g_free(((MSG*)(si->si_value.sival_ptr))->ip);
-	g_free((MSG*)(si->si_value.sival_ptr));
+//	g_free(((MSG*)(si->si_value.sival_ptr))->msg);
+//	g_free(((MSG*)(si->si_value.sival_ptr))->ip);
+//	g_free((MSG*)(si->si_value.sival_ptr));
 }
 
 int main(int argc, char ** argv)

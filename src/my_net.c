@@ -66,6 +66,7 @@ static int my_listen()
 		msg = g_strdup_printf("%s",recBuffer);
 		//do_message(inet_ntoa(toAddr.sin_addr), recBuffer);
 		message->msg = msg;
+		g_message("tom debug,msg=%s",msg);
 		message->ip = g_strdup_printf("%s", inet_ntoa(toAddr.sin_addr));	
 		val.sival_ptr = message;
 		sigqueue(me, SIGRTMIN, val);
