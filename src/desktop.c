@@ -78,6 +78,12 @@ void cb_chat_send(gpointer data, GtkWidget *widget)
 	g_free(buf2);
 }
 
+void dialog_destroy(CHAT_PERSON * self)
+{
+	self->dialog = NULL;
+	g_message("TOM DEBUG ip:%s's window:%x has destroy", self->ip, self->dialog);
+}
+
 int create_chat_window(CHAT_PERSON *self)
 {
         GtkDialog *dialog ;
@@ -150,6 +156,7 @@ int create_chat_window(CHAT_PERSON *self)
 	gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, FALSE, 6);
         button = gtk_button_new_with_label ("Close");
         g_signal_connect_swapped (G_OBJECT (button), "clicked",G_CALLBACK (gtk_widget_destroy),dialog);
+        g_signal_connect_swapped (G_OBJECT (dialog), "destroy",G_CALLBACK (dialog_destroy),self);
 	gtk_box_pack_start(GTK_BOX(hbox), button, TRUE, FALSE, 6);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), hbox, FALSE, FALSE,2);
 	
@@ -216,7 +223,7 @@ CHAT_PERSON * get_person_by_ip(char*ip)
 		{
 			if(g_strrstr(tmp->person->ip, ip))
 			{
-				return tmp;
+				return tmp->person;
 			}
 		}
 		tmp = tmp->next;	
